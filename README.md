@@ -1,6 +1,3 @@
-# nuclea-projeto-catalogo-imdb
-Repositório com os arquivos do projeto  Catalogo IMDB
-
 # Projeto Final - Catalogo IMDB
 
 Repositório com os arquivos do projeto  Catalogo IMDB
