@@ -1,17 +1,23 @@
 package br.com.nuclea.imdb.service;
 
+import br.com.nuclea.imdb.pessoa.Diretor;
+
+import java.util.ArrayList;
 import java.util.Scanner;
+
 
 public class MenuService {
 
     public static Scanner scanner = new Scanner(System.in);
+    public static DiretorService diretorService = new DiretorService();
+    public static ArrayList<Diretor> diretorList = new ArrayList<Diretor>();
 
     public static void menu() {
 
         int opcao;
 
         do {
-            System.out.println("===== MENU PRINCIPAL =====");
+            System.out.println("===== MENU PRINCIPAL =====\n");
             System.out.println("(1) - Cadastrar Filme");
             System.out.println("(2) - Cadastrar Diretor");
             System.out.println("(3) - Cadastrar Ator");
@@ -61,6 +67,7 @@ public class MenuService {
                     break;
 
                 case 0:
+                    scanner.close();
                     System.out.println("Encerrando sistema...");
                     break;
 
@@ -84,9 +91,12 @@ public class MenuService {
     }
 
     public static void cadastrarDiretor() {
-        System.out.println("Cadastrando Diretor");
+        Diretor diretor = diretorService.cadastrarDiretor();
+        MenuService.diretorList.add(diretor);
+        System.out.printf("O diretor %s foi criado com sucesso\n.", diretor.getNome());
         System.out.println("Pressione ENTER para retornar ao menu.");
         scanner.nextLine();
+
         menu();
     }
 
@@ -119,7 +129,8 @@ public class MenuService {
     }
 
     public static void listarDiretores() {
-        System.out.println("Metodo ainda nao implementado.");
+        //System.out.println("Metodo ainda nao implementado.");
+        diretorService.listarDiretor();
         System.out.println("Pressione ENTER para retornar ao menu.");
         scanner.nextLine();
         menu();
