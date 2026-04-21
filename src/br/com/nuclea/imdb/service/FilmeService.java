@@ -12,14 +12,26 @@ public class FilmeService {
         this.filmeList = new ArrayList<>();
     }
 
-    public void setfilmeSerive(Filme filme) {
+    public void setfilmeService(Filme filme) {
         filmeList.add(filme);
     }
 
+    public void listarFilmes() {
+        if (filmeList.isEmpty()) {
+            System.out.println("\nNenhum filme cadastrado.\n");
+            return;
+        }
+        System.out.println(" + Lista de Filmes");
+        System.out.println("------------------------------");
+        for (Filme filme : filmeList) {
+            System.out.println("Nome: " + filme.getNomeFilme() + " | Data de lançamento: "  + filme.getDataLancamento());
+            System.out.println("------------------------------");
+        }
+    }
 
-    public Filme pesquisarFilmeNome(String nomeFilme){
-        for (Filme filme : filmeList){
-            if(filme.getNomeFilme().equalsIgnoreCase(nomeFilme)){
+    public Filme pesquisarFilmeNome(String nomeFilme) {
+        for (Filme filme : filmeList) {
+            if (filme.getNomeFilme().equalsIgnoreCase(nomeFilme)) {
                 return filme;
             }
         }
