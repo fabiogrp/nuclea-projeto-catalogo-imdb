@@ -15,4 +15,15 @@ public class FilmeService {
     public void setfilmeSerive(Filme filme) {
         filmeList.add(filme);
     }
+
+
+    public Filme pesquisarFilmeNome(String nomeFilme){
+        for (Filme filme : filmeList){
+            if(filme.getNomeFilme().equalsIgnoreCase(nomeFilme)){
+                return filme;
+            }
+        }
+        return null;
+    }
+
 }
