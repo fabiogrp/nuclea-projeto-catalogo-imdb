@@ -18,7 +18,6 @@ public class MenuService {
 
 
     public static void menu() {
-
         int opcao;
 
         do {
@@ -161,7 +160,7 @@ public class MenuService {
     }
 
     public static void listarFilmes() {
-        System.out.println("Metodo ainda nao implementado.");
+        filmeService.listarFilmes();
         System.out.println("Pressione ENTER para retornar ao menu.");
         scanner.nextLine();
         menu();
@@ -191,14 +190,13 @@ public class MenuService {
 
         if (filme != null) {
             System.out.println("Filme encontrado:");
-            System.out.println(filme);
+            System.out.println("------------------------------");
+            System.out.println("Nome: " + filme.getNomeFilme() + " | Data de lançamento: "  + filme.getDataLancamento());
         } else {
             System.out.println("Filme não encontrado!");
         }
         System.out.println("Pressione ENTER para retornar ao menu.");
         scanner.nextLine();
-
-        menu();
     }
 
 }
