@@ -1,5 +1,8 @@
 package br.com.nuclea.imdb.filme;
 
+import br.com.nuclea.imdb.pessoa.Diretor;
+import br.com.nuclea.imdb.pessoa.Pessoa;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,13 +13,21 @@ public class Filme {
     private String descricaoFilme;
     private double orcamentoFilme;
     private String dataLancamento;
-    // private Diretor diretorFilme;
-    // private List<Ator> atoresFilmeList;
+    private Diretor diretorFilme;
+    private List<Pessoa> atoresFilmeList;
 
-   /* public Filme() {
+
+    public Filme(String nomeFilme, String descricaoFilme, double orcamentoFilme, String dataLancamento) {
+        this.nomeFilme = nomeFilme;
+        this.descricaoFilme = descricaoFilme;
+        this.orcamentoFilme = orcamentoFilme;
+        this.dataLancamento = dataLancamento;
         this.atoresFilmeList = new ArrayList<>();
     }
-*/
+
+    public Filme() {
+        this.atoresFilmeList = new ArrayList<>();
+    }
     public String getNomeFilme() {
         return nomeFilme;
     }
@@ -69,6 +80,7 @@ public class Filme {
         for(Ator ator : atoresFilmeList) {
             System.out.println(ator);
         }*/
+
 
         @java.lang.Override
         public java.lang.String toString() {
