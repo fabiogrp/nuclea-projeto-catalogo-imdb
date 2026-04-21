@@ -1,6 +1,7 @@
 package br.com.nuclea.imdb.service;
 
 import br.com.nuclea.imdb.filme.Filme;
+import br.com.nuclea.imdb.pessoa.Ator;
 import br.com.nuclea.imdb.pessoa.Diretor;
 
 import java.util.ArrayList;
@@ -10,9 +11,10 @@ import java.util.Scanner;
 public class MenuService {
 
     public static Scanner scanner = new Scanner(System.in);
-    public static FilmeService filmeService = new FilmeService();
+    public static AtorService atorService = new AtorService();
     public static DiretorService diretorService = new DiretorService();
     public static ArrayList<Diretor> diretorList = new ArrayList<Diretor>();
+    public static FilmeService filmeService = new FilmeService();
 
 
     public static void menu() {
@@ -110,6 +112,16 @@ public class MenuService {
 
     public static void cadastrarAtor() {
         System.out.println("Cadastrando Ator");
+        System.out.print("Nome: ");
+        String nome = scanner.nextLine();
+        System.out.print("Idade: ");
+        int idade = scanner.nextInt();
+        System.out.print("Cachê: ");
+        Double cache = scanner.nextDouble();
+        scanner.nextLine();
+
+        Ator novoAtor = new Ator(nome, idade, cache);
+        atorService.cadastrarAtor(novoAtor);
         System.out.println("Pressione ENTER para retornar ao menu.");
         scanner.nextLine();
         menu();
@@ -124,6 +136,25 @@ public class MenuService {
 
     public static void associarAtor() {
         System.out.println("Associando Ator.");
+        System.out.print("Digite o nome do Filme: ");
+        String nomeBuscaFilme = scanner.nextLine();
+        Filme filmeEncontrado = filmeService.pesquisarFilmeNome(nomeBuscaFilme);
+
+        if (filmeEncontrado == null) {
+            System.out.println("Filme não encontrado!");
+            return;
+        }
+
+        System.out.print("Digite o nome do Ator: ");
+        String nomeBuscaAtor = scanner.nextLine();
+        Ator atorEncontrado = atorService.buscarPorNome(nomeBuscaAtor);
+
+        if (atorEncontrado != null) {
+            filmeEncontrado.adicionarAtor(atorEncontrado);
+            System.out.println("Ator vinculado ao filme com sucesso.");
+        } else {
+            System.out.println("Ator não encontrado no sistema.");
+        }
         System.out.println("Pressione ENTER para retornar ao menu.");
         scanner.nextLine();
         menu();
@@ -145,7 +176,8 @@ public class MenuService {
     }
 
     public static void listarAtores() {
-        System.out.println("Metodo ainda nao implementado.");
+        System.out.println("Listandoa tores");
+        AtorService.listarAtores();
         System.out.println("Pressione ENTER para retornar ao menu.");
         scanner.nextLine();
         menu();

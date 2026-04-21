@@ -1,8 +1,10 @@
 package br.com.nuclea.imdb.filme;
 
+import br.com.nuclea.imdb.pessoa.Ator;
+import br.com.nuclea.imdb.service.AtorService;
+import br.com.nuclea.imdb.repository.AtorMock;
 import java.util.ArrayList;
 import java.util.List;
-
 
 public class Filme {
 
@@ -11,12 +13,12 @@ public class Filme {
     private double orcamentoFilme;
     private String dataLancamento;
     // private Diretor diretorFilme;
-    // private List<Ator> atoresFilmeList;
+    private List<Ator> atoresFilmeList;
 
-   /* public Filme() {
+    public Filme() {
         this.atoresFilmeList = new ArrayList<>();
     }
-*/
+
     public String getNomeFilme() {
         return nomeFilme;
     }
@@ -55,20 +57,29 @@ public class Filme {
 
     public void setDiretorFilme(Diretor diretorFilme) {
         this.diretorFilme = diretorFilme;
+    }*/
+
+    public String getAtores() {
+        if (atoresFilmeList == null || atoresFilmeList.isEmpty()) {
+            return "Não há atores escalados para esse filme.";
+        }
+
+        StringBuilder nomes = new StringBuilder();
+        for (int i = 0; i < atoresFilmeList.size(); i++) {
+            nomes.append(atoresFilmeList.get(i).getNome());
+            if (i < atoresFilmeList.size() - 1) {
+                nomes.append(", ");
+            }
+        }
+        return nomes.toString();
     }
 
-    public Ator getAtorFilme() {
-        return atorFilme;
+    public void adicionarAtor(Ator ator) {
+        if (ator != null) {
+            this.atoresFilmeList.add(ator);
+            System.out.println("Ator " + ator.getNome() + " adicionado ao elenco de " + this.nomeFilme);
+        }
     }
-
-    public void setAtorFilme(Ator atorFilme) {
-        atoresFilmeList.add(atorFilme);
-    }
-
-    public void listaAtoresFilme() {
-        for(Ator ator : atoresFilmeList) {
-            System.out.println(ator);
-        }*/
 
         @java.lang.Override
         public java.lang.String toString() {
@@ -78,7 +89,7 @@ public class Filme {
                     ", orcamentoFilme=" + orcamentoFilme +
                     ", dataLancamento='" + dataLancamento + '\'' +
                     ", diretorFilme=" +
-                    ", atorFilme=" +
+                    ", atorFilme=" + getAtores() +
                     '}';
         }
     }
