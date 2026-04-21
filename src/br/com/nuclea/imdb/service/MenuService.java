@@ -1,5 +1,6 @@
 package br.com.nuclea.imdb.service;
 
+import br.com.nuclea.imdb.filme.Filme;
 import br.com.nuclea.imdb.pessoa.Diretor;
 
 import java.util.ArrayList;
@@ -9,8 +10,10 @@ import java.util.Scanner;
 public class MenuService {
 
     public static Scanner scanner = new Scanner(System.in);
+    public static FilmeService filmeService = new FilmeService();
     public static DiretorService diretorService = new DiretorService();
     public static ArrayList<Diretor> diretorList = new ArrayList<Diretor>();
+
 
     public static void menu() {
 
@@ -26,6 +29,7 @@ public class MenuService {
             System.out.println("(6) - Listar Filmes");
             System.out.println("(7) - Listar Diretores");
             System.out.println("(8) - Listar Atores");
+            System.out.println("(9) - Pesquisar Filme Por Nome");
             System.out.println("(0) - Sair");
             System.out.print("Escolha uma das opcoes do menu: ");
 
@@ -64,6 +68,10 @@ public class MenuService {
 
                 case 8:
                     listarAtores();
+                    break;
+
+                case 9:
+                    pesquisarFilmeNome();
                     break;
 
                 case 0:
@@ -140,6 +148,24 @@ public class MenuService {
         System.out.println("Metodo ainda nao implementado.");
         System.out.println("Pressione ENTER para retornar ao menu.");
         scanner.nextLine();
+        menu();
+    }
+
+    public static void pesquisarFilmeNome() {
+        System.out.println("---PESQUISANDO FILME POR NOME---");
+        System.out.println("Digite o nome do filme: ");
+        String nomeFilme = scanner.nextLine();
+        Filme filme = filmeService.pesquisarFilmeNome(nomeFilme);
+
+        if (filme != null) {
+            System.out.println("Filme encontrado:");
+            System.out.println(filme);
+        } else {
+            System.out.println("Filme não encontrado!");
+        }
+        System.out.println("Pressione ENTER para retornar ao menu.");
+        scanner.nextLine();
+
         menu();
     }
 
