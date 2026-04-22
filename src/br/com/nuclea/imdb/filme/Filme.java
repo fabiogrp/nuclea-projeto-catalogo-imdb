@@ -9,6 +9,8 @@ import java.util.List;
 
 public class Filme {
 
+    private int id;
+    private static int contador;
     private String nomeFilme;
     private String descricaoFilme;
     private double orcamentoFilme;
@@ -18,6 +20,7 @@ public class Filme {
 
 
     public Filme(String nomeFilme, String descricaoFilme, double orcamentoFilme, String dataLancamento) {
+        this.id = ++contador;
         this.nomeFilme = nomeFilme;
         this.descricaoFilme = descricaoFilme;
         this.orcamentoFilme = orcamentoFilme;
@@ -28,6 +31,11 @@ public class Filme {
     public Filme() {
         this.atoresFilmeList = new ArrayList<>();
     }
+
+    public int getId() {
+        return id;
+    }
+
     public String getNomeFilme() {
         return nomeFilme;
     }

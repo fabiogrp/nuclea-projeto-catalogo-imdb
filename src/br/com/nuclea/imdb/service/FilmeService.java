@@ -43,13 +43,13 @@ public class FilmeService {
         return new Filme(nomeFilme, descricaoFilme, orcamento, dataFilme);
     }
 
-    public void setfilmeSerive(Filme filme) {
+    public void setfilmeService(Filme filme) {
         filmeList.add(filme);
     }
 
     public void listarFilmes() {
         for (Filme filme : filmeList)     {
-            System.out.println(filme.getNomeFilme() +  " " + filme.getDataLancamento());
+            System.out.println(filme.getId() + " | "  + filme.getNomeFilme() +  ", " + filme.getDataLancamento());
             System.out.println("------------------------------");
         }
      }
