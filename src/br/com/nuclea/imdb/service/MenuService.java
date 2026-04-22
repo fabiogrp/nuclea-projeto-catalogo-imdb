@@ -1,7 +1,9 @@
 package br.com.nuclea.imdb.service;
 
 import br.com.nuclea.imdb.filme.Filme;
+import br.com.nuclea.imdb.pessoa.Ator;
 import br.com.nuclea.imdb.pessoa.Diretor;
+import br.com.nuclea.imdb.repository.AtorMock;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,9 +16,16 @@ public class MenuService {
     public static FilmeService filmeService = new FilmeService();
     public static DiretorService diretorService = new DiretorService();
     public static List<Diretor> diretorList = new ArrayList<Diretor>();
+    public static AtorService atorService = new AtorService();
+    public static DiretorService diretorService = new DiretorService();
+    public static ArrayList<Diretor> diretorList = new ArrayList<Diretor>();
+    public static FilmeService filmeService = new FilmeService();
+
+    static {
+        AtorMock.getListaAtores();
+    }
 
     public static void menu() {
-
         int opcao;
 
         do {
@@ -29,6 +38,7 @@ public class MenuService {
             System.out.println("(6) - Listar Filmes");
             System.out.println("(7) - Listar Diretores");
             System.out.println("(8) - Listar Atores");
+            System.out.println("(9) - Pesquisar Filme Por Nome");
             System.out.println("(0) - Sair");
             System.out.print("Escolha uma das opcoes do menu: ");
 
@@ -69,6 +79,10 @@ public class MenuService {
                     listarAtores();
                     break;
 
+                case 9:
+                    pesquisarFilmeNome();
+                    break;
+
                 case 0:
                     System.out.println("Encerrando sistema...");
                     //scanner.nextLine();
@@ -104,6 +118,16 @@ public class MenuService {
 
     public static void cadastrarAtor() {
         System.out.println("Cadastrando Ator");
+        System.out.print("Nome: ");
+        String nome = scanner.nextLine();
+        System.out.print("Idade: ");
+        int idade = scanner.nextInt();
+        System.out.print("Cache: ");
+        Double cache = scanner.nextDouble();
+        scanner.nextLine();
+
+        Ator novoAtor = new Ator(nome, idade, cache);
+        atorService.cadastrarAtor(novoAtor);
         System.out.println("Pressione ENTER para retornar ao menu.");
         scanner.nextLine();
     }
@@ -116,6 +140,25 @@ public class MenuService {
 
     public static void associarAtor() {
         System.out.println("Associando Ator.");
+        System.out.print("Digite o nome do Filme: ");
+        String nomeBuscaFilme = scanner.nextLine();
+        Filme filmeEncontrado = filmeService.pesquisarFilmeNome(nomeBuscaFilme);
+
+        if (filmeEncontrado == null) {
+            System.out.println("Filme não encontrado!");
+            return;
+        }
+
+        System.out.print("Digite o nome do Ator: ");
+        String nomeBuscaAtor = scanner.nextLine();
+        Ator atorEncontrado = atorService.buscarPorNome(nomeBuscaAtor);
+
+        if (atorEncontrado != null) {
+            filmeEncontrado.adicionarAtor(atorEncontrado);
+            System.out.println("Ator vinculado ao filme com sucesso.");
+        } else {
+            System.out.println("Ator não encontrado no sistema.");
+        }
         System.out.println("Pressione ENTER para retornar ao menu.");
         scanner.nextLine();
     }
@@ -135,8 +178,27 @@ public class MenuService {
     }
 
     public static void listarAtores() {
-        System.out.println("Metodo ainda nao implementado.");
+        System.out.println("Listandoa tores");
+        AtorService.listarAtores();
         System.out.println("Pressione ENTER para retornar ao menu.");
         scanner.nextLine();
     }
+
+    public static void pesquisarFilmeNome() {
+        System.out.println("---PESQUISANDO FILME POR NOME---");
+        System.out.println("Digite o nome do filme: ");
+        String nomeFilme = scanner.nextLine();
+        Filme filme = filmeService.pesquisarFilmeNome(nomeFilme);
+
+        if (filme != null) {
+            System.out.println("Filme encontrado:");
+            System.out.println("------------------------------");
+            System.out.println("Nome: " + filme.getNomeFilme() + " | Data de lançamento: "  + filme.getDataLancamento());
+        } else {
+            System.out.println("Filme não encontrado!");
+        }
+        System.out.println("Pressione ENTER para retornar ao menu.");
+        scanner.nextLine();
+    }
+
 }
