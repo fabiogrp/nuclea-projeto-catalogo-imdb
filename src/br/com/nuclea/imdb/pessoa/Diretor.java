@@ -34,9 +34,8 @@ public class Diretor {
 
     @Override
     public String toString() {
-        return "Diretor{" +
-                "nome='" + nome + '\'' +
-                ", estilo='" + estilo + '\'' +
-                '}';
+        return
+                "Nome: " + nome +
+                " | Estilo: " + estilo;
     }
 }

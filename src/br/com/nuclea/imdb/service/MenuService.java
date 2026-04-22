@@ -132,6 +132,25 @@ public class MenuService {
 
     public static void associarDiretor() {
         System.out.println("---Associando Diretor---");
+        System.out.print("Digite o nome do Filme: ");
+        String nomeBuscaFilme = scanner.nextLine();
+        Filme filmeEncontrado = filmeService.pesquisarFilmeNome(nomeBuscaFilme);
+
+        if (filmeEncontrado == null) {
+            System.out.println("Filme não encontrado!");
+            return;
+        }
+
+        System.out.print("Digite o nome do Diretor: ");
+        String nomeBuscaDiretor = scanner.nextLine();
+        Diretor diretorEncontrado = diretorService.buscarPorNome(nomeBuscaDiretor);
+
+        if (diretorEncontrado != null) {
+            filmeEncontrado.setDiretorFilme(diretorEncontrado);
+            System.out.println("Diretor vinculado ao filme com sucesso!");
+        } else {
+            System.out.println("Diretor não encontrado no sistema!");
+        }
         System.out.println("Pressione ENTER para retornar ao menu");
         scanner.nextLine();
     }
@@ -181,7 +200,7 @@ public class MenuService {
 
     public static void pesquisarFilmeNome() {
         System.out.println("---Pesquisando Filme Por Nome---");
-        System.out.println("Digite o nome do filme: ");
+        System.out.print("Digite o nome do filme: ");
         String nomeFilme = scanner.nextLine();
         Filme filme = filmeService.pesquisarFilmeNome(nomeFilme);
 
@@ -190,6 +209,7 @@ public class MenuService {
             System.out.println("------------------------------");
             System.out.println("Nome: " + filme.getNomeFilme() + " | Data de lançamento: "  + filme.getDataLancamento());
             System.out.println("Descrição: " + filme.getDescricaoFilme());
+            System.out.println("Diretor(a): " + filme.getDiretorFilme());
             System.out.println("Ator(es): " + filme.getAtores());
         } else {
             System.out.println("Filme não encontrado!");

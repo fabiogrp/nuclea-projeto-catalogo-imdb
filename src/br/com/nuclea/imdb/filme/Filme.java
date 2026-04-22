@@ -62,14 +62,14 @@ public class Filme {
     public void setDataLancamento(String dataLancamento) {
         this.dataLancamento = dataLancamento;
     }
-/*
+
     public Diretor getDiretorFilme() {
         return diretorFilme;
     }
 
     public void setDiretorFilme(Diretor diretorFilme) {
         this.diretorFilme = diretorFilme;
-    }*/
+    }
 
     public String getAtores() {
         if (atoresFilmeList == null || atoresFilmeList.isEmpty()) {
