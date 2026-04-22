@@ -21,12 +21,12 @@ public class AtorService {
         }
 
         if (novoAtor.getCache() != null && novoAtor.getCache() < 0) {
-            System.out.println("O valor do cache não pode ser negativo.");
+            System.out.println("O valor do cachê não pode ser negativo.");
             return;
         }
 
         AtorMock.adicionarAtor(novoAtor);
-        System.out.println("Ator cadastrado com sucesso!");
+        System.out.printf("Ator %s cadastrado com sucesso!\n", novoAtor.getNome());
     }
 
     public static void listarAtores() {

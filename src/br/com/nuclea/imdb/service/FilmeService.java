@@ -27,7 +27,7 @@ public class FilmeService {
         System.out.print("Informe a data do lançamento do filme: ");
         String dataFilme = scanner.nextLine();
 
-        scanner.nextLine();
+//        scanner.nextLine();
 
         System.out.print("Informe o orcamento do filme: ");
         double orcamento = scanner.nextDouble();
@@ -52,6 +52,7 @@ public class FilmeService {
         System.out.println("------------------------------");
         for (Filme filme : filmeList) {
             System.out.println("Nome: " + filme.getNomeFilme() + " | Data de lançamento: "  + filme.getDataLancamento());
+            System.out.println("Descrição: " + filme.getDescricaoFilme());
             System.out.println("------------------------------");
         }
      }

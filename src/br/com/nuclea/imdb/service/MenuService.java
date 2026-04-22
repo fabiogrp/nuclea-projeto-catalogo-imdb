@@ -37,7 +37,7 @@ public class MenuService {
             System.out.println("(8) - Listar Atores");
             System.out.println("(9) - Pesquisar Filme Por Nome");
             System.out.println("(0) - Sair");
-            System.out.print("Escolha uma das opcoes do menu: ");
+            System.out.print("Escolha uma das opções do menu: ");
 
             opcao = scanner.nextInt();
             scanner.nextLine();
@@ -82,12 +82,11 @@ public class MenuService {
 
                 case 0:
                     System.out.println("Encerrando sistema...");
-                    //scanner.nextLine();
                     break;
 
                 default:
                     System.out.println("Opcao invalida!");
-                    System.out.println("Pressione ENTER para retornar ao menu.");
+                    System.out.println("Pressione ENTER para retornar ao menu");
                     scanner.nextLine();
                     break;
             }
@@ -98,45 +97,47 @@ public class MenuService {
     }
 
     public static void cadastrarFilme() {
+        System.out.println("---Cadastrando Filme---");
         Filme filme = filmeService.cadastrarFilme();
         filmeService.setfilmeService(filme);
-        System.out.println("Cadastrando Filme");
-        System.out.println("Pressione ENTER para retornar ao menu.");
+        System.out.printf("Filme %s cadastrado com sucesso!\n" , filme.getNomeFilme());
+        System.out.println("Pressione ENTER para retornar ao menu");
         scanner.nextLine();
     }
 
     public static void cadastrarDiretor() {
+        System.out.println("---Cadastrando Diretor---");
         Diretor diretor = diretorService.cadastrarDiretor();
         MenuService.diretorList.add(diretor);
-        System.out.printf("O diretor %s foi criado com sucesso\n.", diretor.getNome());
-        System.out.println("Pressione ENTER para retornar ao menu.");
+        System.out.printf("O(A) diretor(a) %s foi criado(a) com sucesso!\n", diretor.getNome());
+        System.out.println("Pressione ENTER para retornar ao menu");
         scanner.nextLine();
     }
 
     public static void cadastrarAtor() {
-        System.out.println("Cadastrando Ator");
-        System.out.print("Nome: ");
+        System.out.println("---Cadastrando Ator---");
+        System.out.print("Informe o nome: ");
         String nome = scanner.nextLine();
-        System.out.print("Idade: ");
+        System.out.print("Informe a idade: ");
         int idade = scanner.nextInt();
-        System.out.print("Cache: ");
+        System.out.print("Informe o cachê: ");
         Double cache = scanner.nextDouble();
         scanner.nextLine();
 
         Ator novoAtor = new Ator(nome, idade, cache);
         atorService.cadastrarAtor(novoAtor);
-        System.out.println("Pressione ENTER para retornar ao menu.");
+        System.out.println("Pressione ENTER para retornar ao menu");
         scanner.nextLine();
     }
 
     public static void associarDiretor() {
-        System.out.println("Associando Diretor.");
-        System.out.println("Pressione ENTER para retornar ao menu.");
+        System.out.println("---Associando Diretor---");
+        System.out.println("Pressione ENTER para retornar ao menu");
         scanner.nextLine();
     }
 
     public static void associarAtor() {
-        System.out.println("Associando Ator.");
+        System.out.println("---Associando Ator---");
         System.out.print("Digite o nome do Filme: ");
         String nomeBuscaFilme = scanner.nextLine();
         Filme filmeEncontrado = filmeService.pesquisarFilmeNome(nomeBuscaFilme);
@@ -152,37 +153,34 @@ public class MenuService {
 
         if (atorEncontrado != null) {
             filmeEncontrado.adicionarAtor(atorEncontrado);
-            System.out.println("Ator vinculado ao filme com sucesso.");
+            System.out.println("Ator vinculado ao filme com sucesso!");
         } else {
-            System.out.println("Ator não encontrado no sistema.");
+            System.out.println("Ator não encontrado no sistema!");
         }
-        System.out.println("Pressione ENTER para retornar ao menu.");
+        System.out.println("Pressione ENTER para retornar ao menu");
         scanner.nextLine();
     }
 
     public static void listarFilmes() {
         filmeService.listarFilmes();
-        System.out.println("Metodo ainda nao implementado.");
-        System.out.println("Pressione ENTER para retornar ao menu.");
+        System.out.println("Pressione ENTER para retornar ao menu");
         scanner.nextLine();
     }
 
     public static void listarDiretores() {
-        //System.out.println("Metodo ainda nao implementado.");
         diretorService.listarDiretor();
-        System.out.println("Pressione ENTER para retornar ao menu.");
+        System.out.println("Pressione ENTER para retornar ao menu");
         scanner.nextLine();
     }
 
     public static void listarAtores() {
-        System.out.println("Listandoa tores");
         AtorService.listarAtores();
-        System.out.println("Pressione ENTER para retornar ao menu.");
+        System.out.println("Pressione ENTER para retornar ao menu");
         scanner.nextLine();
     }
 
     public static void pesquisarFilmeNome() {
-        System.out.println("---PESQUISANDO FILME POR NOME---");
+        System.out.println("---Pesquisando Filme Por Nome---");
         System.out.println("Digite o nome do filme: ");
         String nomeFilme = scanner.nextLine();
         Filme filme = filmeService.pesquisarFilmeNome(nomeFilme);
@@ -191,10 +189,12 @@ public class MenuService {
             System.out.println("Filme encontrado:");
             System.out.println("------------------------------");
             System.out.println("Nome: " + filme.getNomeFilme() + " | Data de lançamento: "  + filme.getDataLancamento());
+            System.out.println("Descrição: " + filme.getDescricaoFilme());
+            System.out.println("Ator(es): " + filme.getAtores());
         } else {
             System.out.println("Filme não encontrado!");
         }
-        System.out.println("Pressione ENTER para retornar ao menu.");
+        System.out.println("Pressione ENTER para retornar ao menu");
         scanner.nextLine();
     }
 

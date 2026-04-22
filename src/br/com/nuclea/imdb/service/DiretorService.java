@@ -34,7 +34,7 @@ public class DiretorService {
         for (Diretor diretor : MenuService.diretorList) {
 /*            System.out.println(" + Lista de Diretores");
             System.out.println("------------------------------");*/
-            System.out.println(diretor.getId() + " | "  + diretor.getNome());
+            System.out.println(diretor.getId() + " | "  + diretor.getNome() + " | " + diretor.getEstilo());
             System.out.println("------------------------------");
         }
 
