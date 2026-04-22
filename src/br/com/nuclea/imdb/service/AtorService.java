@@ -21,7 +21,7 @@ public class AtorService {
         }
 
         if (novoAtor.getCache() != null && novoAtor.getCache() < 0) {
-            System.out.println("O valor do cachê não pode ser negativo.");
+            System.out.println("O valor do cache não pode ser negativo.");
             return;
         }
 

@@ -120,7 +120,7 @@ public class MenuService {
         String nome = scanner.nextLine();
         System.out.print("Informe a idade: ");
         int idade = scanner.nextInt();
-        System.out.print("Informe o cachê: ");
+        System.out.print("Informe o cache: ");
         Double cache = scanner.nextDouble();
         scanner.nextLine();
 
