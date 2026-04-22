@@ -17,9 +17,6 @@ public class MenuService {
     public static DiretorService diretorService = new DiretorService();
     public static List<Diretor> diretorList = new ArrayList<Diretor>();
     public static AtorService atorService = new AtorService();
-    public static DiretorService diretorService = new DiretorService();
-    public static ArrayList<Diretor> diretorList = new ArrayList<Diretor>();
-    public static FilmeService filmeService = new FilmeService();
 
     static {
         AtorMock.getListaAtores();
@@ -102,7 +99,7 @@ public class MenuService {
 
     public static void cadastrarFilme() {
         Filme filme = filmeService.cadastrarFilme();
-        filmeService.setfilmeSerive(filme);
+        filmeService.setfilmeService(filme);
         System.out.println("Cadastrando Filme");
         System.out.println("Pressione ENTER para retornar ao menu.");
         scanner.nextLine();

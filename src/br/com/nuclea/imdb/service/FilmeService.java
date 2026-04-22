@@ -14,15 +14,6 @@ public class FilmeService {
         this.filmeList = new ArrayList<Filme>();
     }
 
-    public Filme pesquisarFilmeNome(String nomeFilme){
-        for (Filme filme : filmeList){
-            if(filme.getNomeFilme().equalsIgnoreCase(nomeFilme)){
-                return filme;
-            }
-        }
-        return null;
-    }
-
     public Filme cadastrarFilme() {
 
         Scanner scanner = new Scanner(System.in);
@@ -41,20 +32,11 @@ public class FilmeService {
         System.out.print("Informe o orcamento do filme: ");
         double orcamento = scanner.nextDouble();
 
-        //scanner.close();
+        //scanner.close();pesquisarFilmeNome
 
         return new Filme(nomeFilme, descricaoFilme, orcamento, dataFilme);
 
         //return novoDiretor;
-    }
-
-    public void setfilmeSerive(Filme filme) {
-
-public class FilmeService {
-    private List<Filme> filmeList;
-
-    public FilmeService() {
-        this.filmeList = new ArrayList<>();
     }
 
     public void setfilmeService(Filme filme) {
@@ -62,20 +44,6 @@ public class FilmeService {
     }
 
     public void listarFilmes() {
-        for (Filme filme : filmeList)     {
-            System.out.println(filme.getNomeFilme() +  " " + filme.getDataLancamento());
-            System.out.println("------------------------------");
-        }
-     }
-
-    @Override
-    public String toString() {
-        return "FilmeService{" +
-                "filmeList=" + filmeList +
-                '}';
-    }
-}
-
         if (filmeList.isEmpty()) {
             System.out.println("\nNenhum filme cadastrado.\n");
             return;
@@ -86,6 +54,13 @@ public class FilmeService {
             System.out.println("Nome: " + filme.getNomeFilme() + " | Data de lançamento: "  + filme.getDataLancamento());
             System.out.println("------------------------------");
         }
+     }
+
+    @Override
+    public String toString() {
+        return "FilmeService{" +
+                "filmeList=" + filmeList +
+                '}';
     }
 
     public Filme pesquisarFilmeNome(String nomeFilme) {
@@ -96,5 +71,4 @@ public class FilmeService {
         }
         return null;
     }
-
 }

@@ -26,8 +26,6 @@ public class Filme {
         this.dataLancamento = dataLancamento;
         this.atoresFilmeList = new ArrayList<>();
     }
-    // private Diretor diretorFilme;
-    private List<Ator> atoresFilmeList;
 
     public Filme() {
         this.atoresFilmeList = new ArrayList<>();
