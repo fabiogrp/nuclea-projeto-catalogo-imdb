@@ -59,7 +59,7 @@ public class Filme {
     public void setDataLancamento(String dataLancamento) {
         this.dataLancamento = dataLancamento;
     }
-/*
+
     public Diretor getDiretorFilme() {
         return diretorFilme;
     }
@@ -67,7 +67,7 @@ public class Filme {
     public void setDiretorFilme(Diretor diretorFilme) {
         this.diretorFilme = diretorFilme;
     }
-
+    /*
     public Ator getAtorFilme() {
         return atorFilme;
     }
