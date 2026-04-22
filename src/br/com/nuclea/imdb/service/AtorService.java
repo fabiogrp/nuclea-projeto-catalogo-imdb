@@ -21,7 +21,7 @@ public class AtorService {
         }
 
         if (novoAtor.getCache() != null && novoAtor.getCache() < 0) {
-            System.out.println("O valor do cachê não pode ser negativo.");
+            System.out.println("O valor do cache não pode ser negativo.");
             return;
         }
 
@@ -32,11 +32,14 @@ public class AtorService {
     public static void listarAtores() {
         List<Ator> atores = AtorMock.getListaAtores();
         if (atores.isEmpty()) {
-            System.out.println("Nenhum ator cadastrado.");
-        } else {
-            for (Ator ator : atores) {
-                System.out.println(ator);
-            }
+            System.out.println("\nNenhum ator cadastrado.\n");
+            return;
+        }
+        System.out.println(" + Lista de Atores");
+        System.out.println("------------------------------");
+        for (Ator ator : atores) {
+            System.out.println(ator);
+            System.out.println("------------------------------");
         }
     }
 }

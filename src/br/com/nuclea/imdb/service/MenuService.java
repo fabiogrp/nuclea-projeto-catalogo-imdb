@@ -3,6 +3,7 @@ package br.com.nuclea.imdb.service;
 import br.com.nuclea.imdb.filme.Filme;
 import br.com.nuclea.imdb.pessoa.Ator;
 import br.com.nuclea.imdb.pessoa.Diretor;
+import br.com.nuclea.imdb.repository.AtorMock;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -16,6 +17,9 @@ public class MenuService {
     public static ArrayList<Diretor> diretorList = new ArrayList<Diretor>();
     public static FilmeService filmeService = new FilmeService();
 
+    static {
+        AtorMock.getListaAtores();
+    }
 
     public static void menu() {
         int opcao;
@@ -115,7 +119,7 @@ public class MenuService {
         String nome = scanner.nextLine();
         System.out.print("Idade: ");
         int idade = scanner.nextInt();
-        System.out.print("Cachê: ");
+        System.out.print("Cache: ");
         Double cache = scanner.nextDouble();
         scanner.nextLine();
 

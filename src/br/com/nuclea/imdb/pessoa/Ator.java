@@ -5,16 +5,24 @@ import br.com.nuclea.imdb.repository.AtorMock;
 public class Ator extends Pessoa {
 
     private Double cache;
+    private static int contador;
+    private int id;
+
 
     public Ator(String nome, int idade, Double cache) {
         super(nome, idade);
         this.cache = cache;
+        this.id = ++contador;
     }
 
     public void setCache(Double cache) {}
 
     public Double getCache() {
         return cache;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public Ator buscarPorNome(String nome) {
@@ -26,6 +34,6 @@ public class Ator extends Pessoa {
 
     @Override
     public String toString() {
-        return super.toString() + ", Cache: R$ " + cache;
+        return this.id + " | " + getNome();
     }
 }
