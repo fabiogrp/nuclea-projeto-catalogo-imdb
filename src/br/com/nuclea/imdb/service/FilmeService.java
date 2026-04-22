@@ -36,10 +36,16 @@ public class FilmeService {
         System.out.print("Informe a data do lançamento do filme: ");
         String dataFilme = scanner.nextLine();
 
+        scanner.nextLine();
+
         System.out.print("Informe o orcamento do filme: ");
         double orcamento = scanner.nextDouble();
 
+        //scanner.close();
+
         return new Filme(nomeFilme, descricaoFilme, orcamento, dataFilme);
+
+        //return novoDiretor;
     }
 
     public void setfilmeSerive(Filme filme) {
