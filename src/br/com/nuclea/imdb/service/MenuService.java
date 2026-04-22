@@ -100,7 +100,7 @@ public class MenuService {
     public static void cadastrarFilme() {
         Filme filme = filmeService.cadastrarFilme();
         filmeService.setfilmeService(filme);
-        System.out.println("Cadastrando Filme");
+        System.out.println("Filme cadastrado.");
         System.out.println("Pressione ENTER para retornar ao menu.");
         scanner.nextLine();
     }
@@ -151,7 +151,7 @@ public class MenuService {
         Ator atorEncontrado = atorService.buscarPorNome(nomeBuscaAtor);
 
         if (atorEncontrado != null) {
-            filmeEncontrado.adicionarAtor(atorEncontrado);
+            // filmeEncontrado.adicionarAtor(atorEncontrado);
             System.out.println("Ator vinculado ao filme com sucesso.");
         } else {
             System.out.println("Ator não encontrado no sistema.");
@@ -162,7 +162,6 @@ public class MenuService {
 
     public static void listarFilmes() {
         filmeService.listarFilmes();
-        System.out.println("Metodo ainda nao implementado.");
         System.out.println("Pressione ENTER para retornar ao menu.");
         scanner.nextLine();
     }
@@ -197,5 +196,4 @@ public class MenuService {
         System.out.println("Pressione ENTER para retornar ao menu.");
         scanner.nextLine();
     }
-
 }
