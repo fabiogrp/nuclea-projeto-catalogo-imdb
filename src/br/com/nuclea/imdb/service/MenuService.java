@@ -6,16 +6,17 @@ import br.com.nuclea.imdb.pessoa.Diretor;
 import br.com.nuclea.imdb.repository.AtorMock;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 
 public class MenuService {
 
     public static Scanner scanner = new Scanner(System.in);
-    public static AtorService atorService = new AtorService();
-    public static DiretorService diretorService = new DiretorService();
-    public static ArrayList<Diretor> diretorList = new ArrayList<Diretor>();
     public static FilmeService filmeService = new FilmeService();
+    public static DiretorService diretorService = new DiretorService();
+    public static List<Diretor> diretorList = new ArrayList<Diretor>();
+    public static AtorService atorService = new AtorService();
 
     static {
         AtorMock.getListaAtores();
@@ -80,15 +81,15 @@ public class MenuService {
                     break;
 
                 case 0:
-                    scanner.close();
                     System.out.println("Encerrando sistema...");
+                    //scanner.nextLine();
                     break;
 
                 default:
                     System.out.println("Opcao invalida!");
                     System.out.println("Pressione ENTER para retornar ao menu.");
                     scanner.nextLine();
-                    menu();
+                    break;
             }
 
         } while (opcao != 0);
@@ -97,10 +98,11 @@ public class MenuService {
     }
 
     public static void cadastrarFilme() {
+        Filme filme = filmeService.cadastrarFilme();
+        filmeService.setfilmeService(filme);
         System.out.println("Cadastrando Filme");
         System.out.println("Pressione ENTER para retornar ao menu.");
         scanner.nextLine();
-        menu();
     }
 
     public static void cadastrarDiretor() {
@@ -109,8 +111,6 @@ public class MenuService {
         System.out.printf("O diretor %s foi criado com sucesso\n.", diretor.getNome());
         System.out.println("Pressione ENTER para retornar ao menu.");
         scanner.nextLine();
-
-        menu();
     }
 
     public static void cadastrarAtor() {
@@ -127,14 +127,12 @@ public class MenuService {
         atorService.cadastrarAtor(novoAtor);
         System.out.println("Pressione ENTER para retornar ao menu.");
         scanner.nextLine();
-        menu();
     }
 
     public static void associarDiretor() {
         System.out.println("Associando Diretor.");
         System.out.println("Pressione ENTER para retornar ao menu.");
         scanner.nextLine();
-        menu();
     }
 
     public static void associarAtor() {
@@ -160,14 +158,13 @@ public class MenuService {
         }
         System.out.println("Pressione ENTER para retornar ao menu.");
         scanner.nextLine();
-        menu();
     }
 
     public static void listarFilmes() {
         filmeService.listarFilmes();
+        System.out.println("Metodo ainda nao implementado.");
         System.out.println("Pressione ENTER para retornar ao menu.");
         scanner.nextLine();
-        menu();
     }
 
     public static void listarDiretores() {
@@ -175,7 +172,6 @@ public class MenuService {
         diretorService.listarDiretor();
         System.out.println("Pressione ENTER para retornar ao menu.");
         scanner.nextLine();
-        menu();
     }
 
     public static void listarAtores() {
@@ -183,7 +179,6 @@ public class MenuService {
         AtorService.listarAtores();
         System.out.println("Pressione ENTER para retornar ao menu.");
         scanner.nextLine();
-        menu();
     }
 
     public static void pesquisarFilmeNome() {
