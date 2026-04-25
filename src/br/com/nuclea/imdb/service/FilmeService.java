@@ -14,33 +14,29 @@ public class FilmeService {
         this.filmeList = new ArrayList<Filme>();
     }
 
-    public Filme pesquisarFilmeNome(String nomeFilme){
-        for (Filme filme : filmeList){
-            if(filme.getNomeFilme().equalsIgnoreCase(nomeFilme)){
-                return filme;
-            }
-        }
-        return null;
-    }
-
     public Filme cadastrarFilme() {
 
         Scanner scanner = new Scanner(System.in);
 
-        System.out.print("Informe o nome do filme: ");
+        System.out.print("Nome: ");
         String nomeFilme = scanner.nextLine();
 
-        System.out.print("Informe o descricao do filme: ");
+        System.out.print("Descrição: ");
         String descricaoFilme = scanner.nextLine();
 
-        System.out.print("Informe a data do lançamento do filme: ");
+        System.out.print("Data de lançamento (dd/mm/aaaa): ");
         String dataFilme = scanner.nextLine();
 
-        System.out.print("Informe o orcamento do filme: ");
+//        scanner.nextLine();
+
+        System.out.print("Orçamento R$: ");
         double orcamento = scanner.nextDouble();
 
+        //scanner.close();pesquisarFilmeNome
 
         return new Filme(nomeFilme, descricaoFilme, orcamento, dataFilme);
+
+        //return novoDiretor;
     }
 
     public void setfilmeService(Filme filme) {
@@ -48,11 +44,38 @@ public class FilmeService {
     }
 
     public void listarFilmes() {
-        for (Filme filme : filmeList)     {
-            System.out.println(filme.getId() + " | "  + filme.getNomeFilme() +  ", " + filme.getDataLancamento());
+        if (filmeList.isEmpty()) {
+            System.out.println("\nNenhum filme cadastrado.\n");
+            return;
+        }
+        System.out.println(" + Lista de Filmes");
+        System.out.println("------------------------------");
+        for (Filme filme : filmeList) {
+            System.out.println("ID: " + filme.getId() + " | Nome: " + filme.getNomeFilme() + " | Data de lançamento: "  + filme.getDataLancamento());
+            System.out.println("Descrição: " + filme.getDescricaoFilme());
             System.out.println("------------------------------");
         }
      }
+
+    public List<Filme> pesquisarFilmeNome(String nomeFilme) {
+        List<Filme> filmesEncontrados = new ArrayList<>();
+
+        for (Filme filme : filmeList) {
+            if (filme.getNomeFilme().toLowerCase().contains(nomeFilme.toLowerCase())) {
+                filmesEncontrados.add(filme);
+            }
+        }
+        return filmesEncontrados;
+    }
+
+    public void detalhesFilme(Filme filme) {
+        System.out.println("---Detalhes do Filme---");
+        System.out.println("------------------------------");
+        System.out.println("Nome: " + filme.getNomeFilme() + " | Data de lançamento: " + filme.getDataLancamento() + " | Orçamento R$: " + filme.getOrcamentoFilme());
+        System.out.println("Descrição: " + filme.getDescricaoFilme());
+        System.out.println("Diretor(a): " + filme.getDiretorFilme());
+        System.out.println("Ator(es): " + filme.getAtores());
+    }
 
     @Override
     public String toString() {
@@ -60,5 +83,13 @@ public class FilmeService {
                 "filmeList=" + filmeList +
                 '}';
     }
-}
 
+    public Filme pesquisarFilmeNome(String nomeFilme) {
+        for (Filme filme : filmeList) {
+            if (filme.getNomeFilme().equalsIgnoreCase(nomeFilme)) {
+                return filme;
+            }
+        }
+        return null;
+    }
+}
