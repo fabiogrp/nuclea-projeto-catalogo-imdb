@@ -35,7 +35,6 @@ public class Diretor {
     @Override
     public String toString() {
         return
-                "Nome: " + nome +
-                " | Estilo: " + estilo;
+                this.id + " | " + this.nome + " | " + this.estilo;
     }
 }

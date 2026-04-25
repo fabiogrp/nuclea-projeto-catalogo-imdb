@@ -17,6 +17,8 @@ public class Filme {
     private String dataLancamento;
     private Diretor diretorFilme;
     private List<Pessoa> atoresFilmeList;
+    private static int contador;
+    private int id;
 
 
     public Filme(String nomeFilme, String descricaoFilme, double orcamentoFilme, String dataLancamento) {
@@ -25,6 +27,7 @@ public class Filme {
         this.orcamentoFilme = orcamentoFilme;
         this.dataLancamento = dataLancamento;
         this.atoresFilmeList = new ArrayList<>();
+        this.id = ++contador;
     }
 
     public Filme() {
@@ -63,12 +66,18 @@ public class Filme {
         this.dataLancamento = dataLancamento;
     }
 
-    public Diretor getDiretorFilme() {
-        return diretorFilme;
+    public String getDiretorFilme() {
+        if (diretorFilme == null) {
+            return "Não há diretor escalado para esse filme.";
+        }
+
+        return diretorFilme.toString();
     }
 
     public void setDiretorFilme(Diretor diretorFilme) {
+
         this.diretorFilme = diretorFilme;
+        System.out.println("Diretor(a) " + diretorFilme.getNome() + " adicionado ao elenco de " + this.nomeFilme);
     }
 
     public String getAtores() {
@@ -93,15 +102,18 @@ public class Filme {
         }
     }
 
+    public int getId() {
+        return id;
+    }
 
-        @java.lang.Override
+    @java.lang.Override
         public java.lang.String toString() {
-            return "Filme{" +
+            return "Filme{" + "ID: " + id +
                     "nomeFilme='" + nomeFilme + '\'' +
                     ", descricaoFilme='" + descricaoFilme + '\'' +
                     ", orcamentoFilme=" + orcamentoFilme +
                     ", dataLancamento='" + dataLancamento + '\'' +
-                    ", diretorFilme=" +
+                    ", diretorFilme=" + getDiretorFilme() +
                     ", atorFilme=" + getAtores() +
                     '}';
         }

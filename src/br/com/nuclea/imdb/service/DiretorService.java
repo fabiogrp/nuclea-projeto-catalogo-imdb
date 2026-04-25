@@ -34,7 +34,7 @@ public class DiretorService {
     }
 
     public void listarDiretor(){
-        if(MenuService.diretorList.size() == 0){
+        if(MenuService.diretorList.isEmpty()){
             System.out.println("\nNenhum Diretor cadastrado.\n");
             return;
         }
