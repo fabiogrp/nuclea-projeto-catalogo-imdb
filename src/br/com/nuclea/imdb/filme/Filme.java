@@ -99,6 +99,13 @@ public class Filme {
         return nomes.toString();
     }
 
+    public void adicionarAtor(Ator ator) {
+        if (ator != null) {
+            this.atoresFilmeList.add(ator);
+            System.out.println("Ator " + ator.getNome() + " adicionado ao elenco de " + this.nomeFilme);
+        }
+    }
+
     public void setAtorFilme(Ator atorFilme) {
         atoresFilmeList.add(atorFilme);
     }
