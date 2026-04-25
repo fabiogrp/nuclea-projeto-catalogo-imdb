@@ -4,6 +4,7 @@ import br.com.nuclea.imdb.filme.Filme;
 import br.com.nuclea.imdb.pessoa.Ator;
 import br.com.nuclea.imdb.pessoa.Diretor;
 import br.com.nuclea.imdb.repository.AtorMock;
+import br.com.nuclea.imdb.repository.FilmeMock;
 
 import java.util.ArrayList;
 import java.util.InputMismatchException;
@@ -21,6 +22,7 @@ public class MenuService {
 
     static {
         AtorMock.getListaAtores();
+        FilmeMock.getListaFilmes();
     }
 
     public static final String RESET = "\u001B[0m";
@@ -228,7 +230,7 @@ public class MenuService {
     }
 
     public static void listarFilmes() {
-        filmeService.listarFilmes();
+        FilmeService.listarFilmes();
         System.out.println("Pressione ENTER para retornar ao menu");
         scanner.nextLine();
     }
