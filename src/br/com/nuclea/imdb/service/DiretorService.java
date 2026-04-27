@@ -1,7 +1,9 @@
 package br.com.nuclea.imdb.service;
 
 
+import br.com.nuclea.imdb.pessoa.Ator;
 import br.com.nuclea.imdb.pessoa.Diretor;
+import br.com.nuclea.imdb.repository.AtorMock;
 
 import java.util.Scanner;
 
@@ -24,8 +26,15 @@ public class DiretorService {
         //return novoDiretor;
     }
 
+    public Diretor buscarPorNome(String nome) {
+        for (Diretor diretor : MenuService.diretorList) {
+            if (diretor.getNome().equalsIgnoreCase(nome)) return diretor;
+        }
+        return null;
+    }
+
     public void listarDiretor(){
-        if(MenuService.diretorList.size() == 0){
+        if(MenuService.diretorList.isEmpty()){
             System.out.println("\nNenhum Diretor cadastrado.\n");
             return;
         }
@@ -34,7 +43,7 @@ public class DiretorService {
         for (Diretor diretor : MenuService.diretorList) {
 /*            System.out.println(" + Lista de Diretores");
             System.out.println("------------------------------");*/
-            System.out.println(diretor.getId() + " | "  + diretor.getNome());
+            System.out.println(diretor.getId() + " | "  + diretor.getNome() + " | " + diretor.getEstilo());
             System.out.println("------------------------------");
         }
 

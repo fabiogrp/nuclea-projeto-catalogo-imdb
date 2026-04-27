@@ -26,7 +26,7 @@ public class AtorService {
         }
 
         AtorMock.adicionarAtor(novoAtor);
-        System.out.println("Ator cadastrado com sucesso!");
+        System.out.printf("\nAtor/Atriz %s cadastrado(a) com sucesso!\n", novoAtor.getNome());
     }
 
     public static void listarAtores() {
